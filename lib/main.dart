@@ -8,6 +8,7 @@ void main() => runApp(new MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    /* Define all routes*/
     var _routes = <String, WidgetBuilder>{
       "/next": (BuildContext context) => NextPage(),
     };
@@ -38,7 +39,6 @@ class _MainHomepageState extends State<MainHomepage> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
             Row(
-              verticalDirection: VerticalDirection.down,
               children: <Widget>[
                 Expanded(
                   child: TextField(
@@ -90,12 +90,16 @@ class _NextPageState extends State<NextPage> {
   }
 }
 
+/* save preference saves dat fetched from main page to shared preference.
+Future object is used since we need to wait get access to shared preference.*/
 Future<bool> _savetoPrefernce(String _text) async {
   SharedPreferences pref = await SharedPreferences.getInstance();
   var commit = pref.setString("text", _text);
   return commit;
 }
 
+/* get preference fetch data from shared preference.
+Future object is used since we need to wait get access to shared preference.*/
 Future<String> _getPrefernce() async {
   SharedPreferences pref = await SharedPreferences.getInstance();
   String _text = pref.get("text");

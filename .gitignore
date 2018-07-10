@@ -7,3 +7,13 @@
 build/
 
 .flutter-plugins
+
+
+.atom/
+.idea
+.packages
+.pub/
+build/
+ios/.generated/
+packages
+pubspec.lock
